@@ -564,8 +564,10 @@ class SSHConnection(SSHPacketHandler):
 
         self._inpbuf = self._inpbuf[idx+1:]
 
-        if (version.startswith(b'SSH-2.0-') or
-                (self.is_client() and version.startswith(b'SSH-1.99-'))):
+        if True: # XXX: Allow all clients. (Just try... We have some old devices.)
+
+#        if (version.startswith(b'SSH-2.0-') or
+#                (self.is_client() and version.startswith(b'SSH-1.99-'))):
             # Accept version 2.0, or 1.99 if we're a client
             if self.is_server():
                 self._client_version = version
